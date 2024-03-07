@@ -36,7 +36,7 @@ public class ListController implements Controller {
 		}
 		int pageSize=5;		//pageSize 를 15 또는 10으로 변경해서 실행해 봅시다.
 		int totalCount = dao.count();
-
+		
 		//위의 값들을 이용해서 Paging 객체를 생성하면서 다른 필드값을 계산합니다.
 		Paging paging = new Paging(currentPage, totalCount, pageSize);
 		logger.info(":::::::: ListController paging : {} ::::::::",paging);
