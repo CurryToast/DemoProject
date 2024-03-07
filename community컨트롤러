@@ -1,0 +1,23 @@
+ListController
+	- community/list
+	- 파라미터 (GET)
+		- "page", Integer
+	- 어트리뷰트
+		- "list", List<Community>
+		- "paging", Paging 클래스 객체
+		- "today", LocaleDate.now()
+
+ReadController
+	- community/read
+	- 파라미터 (GET)
+		- "idx", Long
+		- "page", Integer
+	- 어트리뷰트
+		- "vo", Community 객체
+		- "cmtlist", List<CommunityComments>
+		- "page", Integer
+
+WriteViewController
+	- community/write
+	- 파라미터 (GET)
+		- "page", Integer (paging 객체의 currentPage 값)

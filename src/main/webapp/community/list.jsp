@@ -29,7 +29,7 @@
 			<hr style="color:orange;">
 			<ul id="main">
 				<li>
-					<ul  class="row">
+					<ul class="row">
 						<li>번호</li>
 						<li>제목</li>
 						<li>작성자</li>
