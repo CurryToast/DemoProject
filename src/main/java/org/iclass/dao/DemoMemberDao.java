@@ -14,11 +14,13 @@ public class DemoMemberDao {
 		return dao;
 	}
 
-	public void join(DemoMember member) {
+	public int join(DemoMember member) {
 		SqlSession sqlSession = SqlSessionBean.getSession();
-		sqlSession.insert("demomember.join",member);
+		int result = sqlSession.insert("demomember.join",member);
 		sqlSession.commit();
 		sqlSession.close();
+		
+		return result;
 	}
 	
 	public void modify(DemoMember member) {

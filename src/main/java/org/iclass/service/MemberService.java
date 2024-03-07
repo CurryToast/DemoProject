@@ -14,15 +14,18 @@ public class MemberService {
 	private DemoMemberDao dao = DemoMemberDao.getInstance();
 	
 	// password 해싱
-	public void join(DemoMember member) {
+	public int join(DemoMember member) {
+		int result = 0;
+
 		try {
 			String password = encrypt(member.getPassword());
 			member.setPassword(password);
-			dao.join(member);
+			result = dao.join(member);
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
-				
+		
+		return result;
 	}
 	// password 해싱
 	public DemoMember login(Map<String,String> map) {
