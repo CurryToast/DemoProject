@@ -6,6 +6,8 @@ import java.util.Map;
 import org.iclass.controller.community.ListController;
 import org.iclass.controller.community.ReadController;
 import org.iclass.controller.community.WriteViewController;
+import org.iclass.controller.member.LoginActionController;
+import org.iclass.controller.member.LoginViewController;
 
 public class RequestControllerMapping {
 	private static final Map<RequestKeyValue,Controller> mapping = new HashMap<>();
@@ -15,6 +17,10 @@ public class RequestControllerMapping {
 		mapping.put(new RequestKeyValue("/community/list", "GET"), new ListController() );
 		mapping.put(new RequestKeyValue("/community/write","GET"), new WriteViewController() );
 //		mapping.put(new RequestKeyValue("/community/write","POST"), new WriteController() );
+		
+		// 로그인
+		mapping.put(new RequestKeyValue("/login", "GET"), new LoginViewController());
+		mapping.put(new RequestKeyValue("/login", "POST"), new LoginActionController());
 
 //		// 게시판 글 상세보기 ,수정하기,삭제하기
 		mapping.put(new RequestKeyValue("/community/read", "GET"), new ReadController() );

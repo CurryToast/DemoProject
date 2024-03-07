@@ -27,9 +27,6 @@ public class ListController implements Controller {
 		//db에서 글목록 가져오기
 		CommunityDao dao = CommunityDao.getInstance();
 
-//		request.setAttribute("list", dao.list());
-//			ㄴ 아래 페이지 만들기로 변경합니다.
-
 		String page=request.getParameter("page");
 		if (page != null) {
 			currentPage = Integer.parseInt(page);		//list.jsp 에 page 파라미터를 찾아보세요.
@@ -58,7 +55,6 @@ public class ListController implements Controller {
 		//요청링크가 /community/list 였고 원하는 jsp도 community 폴더에 있으므로 다음과 같음.
 		RequestDispatcher dispatcher = request.getRequestDispatcher("list.jsp");
 		dispatcher.forward(request, response);
-
 	}
 
 }
