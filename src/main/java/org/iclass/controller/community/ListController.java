@@ -28,6 +28,7 @@ public class ListController implements Controller {
 		CommunityDao dao = CommunityDao.getInstance();
 
 		String page=request.getParameter("page");
+
 		if (page != null) {
 			currentPage = Integer.parseInt(page);		//list.jsp 에 page 파라미터를 찾아보세요.
 		}
