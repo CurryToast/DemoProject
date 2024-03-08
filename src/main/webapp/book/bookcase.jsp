@@ -22,33 +22,42 @@
 	</head>
 	<body class="is-preload">
 		<div id="page-wrapper">
-
 			<!-- Header -->
-				<%@ include file="../layout/header.jsp" %>
+			<%@ include file="../layout/header.jsp" %>
 			<!-- Main -->
 			<section id="booklist">
 				<h3>책장</h3>
 				<p>판매 중인 중고도서입니다.</p>
 				<hr style="color:white;">
+				<c:if test="${user != null}">
+					<div style="text-align: center;">
+						<a href="form">판매 등록</a>
+					</div>
+				</c:if>
 				<div id="mainarea">
 					<c:forEach var="bo" items="${saleList }">
-					<div class="gallery bookcase">
-						<div style="height:80%;">
-							<img src="../images/bookcase/${bo.cover }" alt="${bo.title }">
-						</div>
-						<div  class="intro">	
-							<c:if test="${bo.status=='N' }">
-								<i class="fa-solid fa-circle-xmark"></i> 판매완료
-							</c:if>
-							<c:if test="${bo.status=='Y' }">
-								<a data-all="${bo.bcode},${bo.title},${bo.price},${bo.saleuser}"><i class="fa-regular fa-circle-play"></i> 구매하기</a>
-							</c:if>
-							<div>
-							<c:out value="${bo.title }"/> (<fmt:formatNumber value="${bo.price }" pattern="###,###"/> 원)
+						<div class="gallery bookcase">
+							<div style="height:80%;">
+								<%-- <img src="../images/bookcase/${bo.cover}" alt="${bo.title }"> --%>
+								<img src="/upload/${bo.cover}" alt="${bo.title}">
+								<!--
+									todo : 사용자가 파일 (이미지, 텍스트 등)을 업르도 했을때
+									서버 컴퓨터 특정 폴더에 저장되도록 하며, 그때는 src 속성값도 변경
+								 -->
 							</div>
-							<div><span style="font-size: 0.8em;">판매회원</span> : <c:out value="${bo.saleuser }"/></div>
+							<div  class="intro">	
+								<c:if test="${bo.status == 'N' }">
+									<i class="fa-solid fa-circle-xmark"></i> 판매완료
+								</c:if>
+								<c:if test="${bo.status == 'Y'}">
+									<a data-all="${bo.bcode},${bo.title},${bo.price},${bo.saleuser}"><i class="fa-regular fa-circle-play"></i> 구매하기</a>
+								</c:if>
+								<div>
+								<c:out value="${bo.title}"/> (<fmt:formatNumber value="${bo.price }" pattern="###,###"/> 원)
+								</div>
+								<div><span style="font-size: 0.8em;">판매회원</span> : <c:out value="${bo.saleuser }"/></div>
+							</div>
 						</div>
-					</div>
 					</c:forEach>
 				</div>
 			</section>
@@ -76,9 +85,9 @@
 						<h3 id="price" class="inline"></h3>원
 					</div>	
 					<div class="pay">
-							<!-- 결제 UI, 이용약관 UI 영역 -->
-							  <div id="payment-method"></div>
-							  <div id="agreement"></div>
+						<!-- 결제 UI, 이용약관 UI 영역 -->
+						<div id="payment-method"></div>
+						<div id="agreement"></div>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -89,24 +98,23 @@
 			</div>
 		</div>
 	</div>
-
-		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/jquery.dropotron.min.js"></script>
-			<script src="../assets/js/browser.min.js"></script>
-			<script src="../assets/js/breakpoints.min.js"></script>
-			<script src="../assets/js/util.js"></script>
-			<script src="../assets/js/main.js"></script>
-			<script src="../js/nav.js"></script>
-			<!-- 부트스트랩 - 모달 사용 -->
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-			<!-- 비동기 http 통신 axios api-->
-			<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-			<!-- 결제위젯 SDK 추가 -->
-  			<script src="https://js.tosspayments.com/v1/payment-widget"></script>
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/jquery.dropotron.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+	<script src="../js/nav.js"></script>
+	<!-- 부트스트랩 - 모달 사용 -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- 비동기 http 통신 axios api-->
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<!-- 결제위젯 SDK 추가 -->
+	<script src="https://js.tosspayments.com/v1/payment-widget"></script>
   	<script type="text/javascript">
-	const obj ={}
-	let orderid=''
+		const obj ={};
+		let orderid='';
   	</script>		
   	<script src="../js/bookcase.js"></script>		
 	<script>
@@ -126,25 +134,24 @@
 					location.href='../login'  // 로그인 후 글쓰기 url로 redirect 하기 위한 파라미터
 				}
 			}else {
-			
-			const datas = target.getAttribute("data-all")
-			const arr = datas.split(",");
-			obj.bcode = arr[0];
-			obj.title = arr[1];
-			obj.price = arr[2];
-			obj.saleuser = arr[3];
-			
-			const now = new Date();
-			orderid = now.toISOString().replace(/\D/g, '').slice(2, 14);
-	//		const obj = {bcode :arr[0] ,title:arr[1] , price :arr[2] , saleuser:arr[3] }
-			document.querySelector(".modal-body #saleuser").innerHTML = obj.saleuser
-			document.querySelector(".modal-body #title").innerHTML = obj.title
-			document.querySelector(".modal-body #price").innerHTML = Number(obj.price).toLocaleString("ko-KR")
-			modal.show();
-			tossPayInit();
+				const datas = target.getAttribute("data-all")
+				const arr = datas.split(",");
+				obj.bcode = arr[0];
+				obj.title = arr[1];
+				obj.price = arr[2];
+				obj.saleuser = arr[3];
+
+				const now = new Date();
+				orderid = now.toISOString().replace(/\D/g, '').slice(2, 14);
+		//		const obj = {bcode :arr[0] ,title:arr[1] , price :arr[2] , saleuser:arr[3] }
+				document.querySelector(".modal-body #saleuser").innerHTML = obj.saleuser
+				document.querySelector(".modal-body #title").innerHTML = obj.title
+				document.querySelector(".modal-body #price").innerHTML = Number(obj.price).toLocaleString("ko-KR")
+				modal.show();
+				tossPayInit();
 			}
 		})
 		
-</script>			
+	</script>			
 	</body>
 </html>
