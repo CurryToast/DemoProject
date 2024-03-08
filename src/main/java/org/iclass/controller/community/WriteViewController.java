@@ -11,7 +11,6 @@ import org.iclass.controller.Controller;
 
 public class WriteViewController implements Controller {
 
-	
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			request.setAttribute("page",request.getParameter("page"));

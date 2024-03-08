@@ -67,34 +67,34 @@ section  {
 	border-radius: 3px;
 	font-size: 0.8em;
 }	
-#read ul.mrow4 > li:nth-child(2){
+#read ul.mrow4 > li:nth-child(2) {
 	flex-basis:35%;
-	color:#1A237E;
+	color:#1a237e;
 	text-align: left;
 	padding-left: 1em;
 }
-#read ul.mrow4 > li:nth-child(3){
+#read ul.mrow4 > li:nth-child(3) {
 	flex-basis:15%;
 	background-color: #bf4c43;
 	color:white;
 	border-radius: 3px;
 	font-size: 0.8em;
 }
-#read ul.mrow4 > li:nth-child(4){
+#read ul.mrow4 > li:nth-child(4) {
 	flex-basis:35%;
-	color:#1A237E;
+	color:#1a237e;
 }
 
-#read ul.mrow2 > li:nth-child(1){
+#read ul.mrow2 > li:nth-child(1) {
 	flex-basis:15%;
 	background-color: #bf4c43;
 	color:white;
 	border-radius: 3px;
 	font-size: 0.8em;
 }	
-#read ul.mrow2 > li:nth-child(2){
+#read ul.mrow2 > li:nth-child(2) {
 	flex-basis:85%;
-	color:#1A237E;
+	color:#1a237e;
 	text-align: left;
 	padding-left: 1em;
 }
@@ -135,7 +135,7 @@ section  {
 
 #read pre{
 	font-size: 1.1em;
-	color : 1A237E;
+	color : #1a237e;
 	padding-bottom: 10px;
 	line-height: 1.5em;
 	font-family: 맑은고딕, Malgun Gothic,sans-serif;
