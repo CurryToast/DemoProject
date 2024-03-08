@@ -46,7 +46,8 @@ public class ReadController implements Controller {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("read.jsp");
 			dispatcher.forward(request, response);
 		}catch (NumberFormatException  e) {
-			response.sendRedirect("list");			// NumberFormatException  처리
+			logger.info("오류 : {}", e.getMessage());
+			response.sendRedirect("list"); // NumberFormatException  처리
 		}
 	}
 

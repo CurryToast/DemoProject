@@ -35,11 +35,14 @@ public class UpdateViewController implements Controller {
 			CommunityDao dao = CommunityDao.getInstance();
 			Community vo = dao.selectByIdx(idx);
 
-		// 2) id 글 작성자와 로그인 작성자 비교-일치하지 않으면 예외 발생
-		// 		인가(권한) 확인, 인증 (로그인-사용자확인)
-		if (vo == null || !vo.getWriter().equals(user.getUserid())) throw new RuntimeException();
-			request.setAttribute("vo", vo);				
-			
+			// 2) id 글 작성자와 로그인 작성자 비교-일치하지 않으면 예외 발생
+			// 		인가(권한) 확인, 인증 (로그인-사용자확인)
+			if (vo == null || !vo.getWriter().equals(user.getUserid())) {
+				throw new RuntimeException();
+			}
+
+			request.setAttribute("vo", vo);
+
 			// 현재페이지를 read.jsp에서 받아 update.jsp로 전달합니다.
 			logger.info(":::::::UpdateViewController page - {} ::::::::::", request.getParameter("page"));
 			request.setAttribute("page",request.getParameter("page") ); 	// 현재페이지 번호 전달 - 4)
@@ -47,6 +50,7 @@ public class UpdateViewController implements Controller {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("update.jsp");
 			dispatcher.forward(request, response);
 		} catch (NumberFormatException e) {
+			logger.info("오류 : {}", e.getMessage());
 			response.sendRedirect("list");
 		}
 
