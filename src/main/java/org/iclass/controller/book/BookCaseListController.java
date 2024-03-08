@@ -16,15 +16,14 @@ public class BookCaseListController implements Controller{
 
 	@Override
  	public void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
+
 		BookcaseDao dao = BookcaseDao.getInstance();
 		List<BookcaseBook> list = dao.saleList(null);
-		
+
 		request.setAttribute("saleList", list);
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("bookcase.jsp");
 		dispatcher.forward(request, response);
-	 
- 	}	
-	
+
+ 	}
 }
