@@ -22,7 +22,7 @@ public class DemoMember {
 	@Setter
 	private String password; // required
 	private String email; // required
-	private int birth; // required
+	private String birth; // required
 	private String gender; // required
 	private String phone; // required
 	private String favorites;
@@ -33,25 +33,4 @@ public class DemoMember {
 	private String postalCode;
 	private String adultYn; // required
 	private Timestamp joinDate;
-
-	// 필수요소만 입력 용 생성자
-	public DemoMember(
-		String userid,
-		String name,
-		String password,
-		String email,
-		int birth,
-		String gender,
-		String phone,
-		String adultYn
-	) {
-		this.userid = userid;
-		this.name = name;
-		this.password = password;
-		this.email = email;
-		this.birth = birth;
-		this.gender = gender;
-		this.phone = phone;
-		this.adultYn = adultYn;
-	}
 }

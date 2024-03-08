@@ -16,7 +16,8 @@ class DemoMemberTest {
 
 	@Test
 	void test() {
-		testMemberJoin();
+//		testMemberJoin();
+ 	    testMemberLogin();
 	}
 	
 	void testMemberJoin() {
@@ -26,10 +27,17 @@ class DemoMemberTest {
 			"임현범",
 			"123456",
 			"gusqja4515@naver.com",
-			950712,
+			"19950712",
 			"MALE",
-			"01026664515",
-			"Y"
+			"010-2666-4515",
+			null,
+			null,
+			null,
+			null,
+			null,
+			null,
+			"Y",
+			null
 		));
 		
 		log.info("회원가입 결과 : {}", result == 1 ? "성공" : "실패");
