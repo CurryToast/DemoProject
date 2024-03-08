@@ -1,0 +1,29 @@
+1. 파일 선택하는 페이지
+	- url /book/form
+	- BookCaseFormController.java => bookcaseForm.jsp
+
+2. form 설정 (submit 시 파일도 제출 가능하도록 설정)
+	- bookcaseForm.jsp
+		- form 요소의 enctype 프로퍼티를 "multipart/data" 값 설정
+		- input 요소의 type 프로퍼티를 "file" 값 설정
+
+3. form submit 시 파일 업로드하는 컨트롤러 설정
+	- url /book/save
+	- BookCaseSaveController.java
+	- 다음 값들을 초기값으로 MultipartRequest 객체 생성
+		- form으로 넘겨받은 request 파라미터 값
+		- 서버 컴퓨터의 업로드 폴더 경로
+		- 한번에 업로드 가능한 파일의 최대 사이즈
+		- DefaultFIleRenamePolicy 객체
+			- 서버에 이미 존재하는 파일과 같은 이름의 파일이 업로드될 경우, 파일명에 임의의 정수를 추가하여 이름을 바꾸는 정책을 구현하는 객체
+		- 업로드한 파일의 파일명을 가져올때는 MultipartRequest 객체의 getFilesystemName() 메소드를 사용해야 함
+	- 서버에 파일 업로드 완료 후 DB도 업데이트
+
+4. 서버 컴퓨터 폴더 경로를 톰캣 서버에 설정
+	- 톰캣의 server.xml 파일
+		- 파일이 업로드된 서버 컴퓨터의 폴더 경로를 코드 상에서 사용하기 위함
+			- 경로 예시 : "D:\\hyeonbeom\\upload"
+			- server.xml 예시 : <Context docBase="D:/hyeonbeom/upload" path="/upload" />
+			- 실제 코드 상에서 경로를 "/upload"로 사용 가능
+			- 주의 사항 : <Host> 내부에 작성해야 함
+	- 설정 후 서버 리스타트 필요함
