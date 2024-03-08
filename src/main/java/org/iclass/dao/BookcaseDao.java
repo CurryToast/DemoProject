@@ -18,7 +18,7 @@ public class BookcaseDao {
 	public static BookcaseDao getInstance() {
 		return dao;
 	}
-	
+
 	public List<BookcaseBook> saleList(Map<String,String> map) {
 		SqlSession sqlSession = SqlSessionBean.getSession();
 		List<BookcaseBook> list = sqlSession.selectList("bookcase.saleList",map);
@@ -26,14 +26,14 @@ public class BookcaseDao {
 		sqlSession.close();
 		return list;
 	}
-	
+
 	public BookcaseBook getOne(String bcode) {
 		SqlSession sqlSession = SqlSessionBean.getSession();
 		BookcaseBook book = sqlSession.selectOne("bookcase.getOne",bcode);
 		sqlSession.close();
 		return book;
 	}
-	
+
 	public int saleOne(SalePayDetails book) {
 		SqlSession sqlSession = SqlSessionBean.getSession();
 		int result=0;	
@@ -49,7 +49,15 @@ public class BookcaseDao {
 		}	
 		return result;
 	}
-	
+
+	public int register(BookcaseBook book) {
+		SqlSession sqlSession = SqlSessionBean.getSession();
+		int result = sqlSession.insert("bookcase.register", book);
+		sqlSession.commit();
+		sqlSession.close();
+		return result;
+	}
+
 	/*
 	 * public int changeStatus(String bcode) { SqlSession sqlSession =
 	 * SqlSessionBean.getSession(); return null; }

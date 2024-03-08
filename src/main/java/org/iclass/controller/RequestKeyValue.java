@@ -10,8 +10,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@EqualsAndHashCode			//필수
+@EqualsAndHashCode			// 필수
 public class RequestKeyValue {
-	private String url;		//servlet Path
-	private String method;	//GET,POST
+	private String url;		// servlet Path
+	private String method;	// GET,POST
 }
