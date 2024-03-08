@@ -23,5 +23,4 @@ public class Community {
 	private Timestamp createdAt;
 	private String ip;
 	private String commentCount;
-
 }

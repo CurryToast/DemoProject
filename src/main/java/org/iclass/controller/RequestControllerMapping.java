@@ -3,9 +3,12 @@ package org.iclass.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.iclass.controller.community.CommentsController;
+import org.iclass.controller.community.DeleteController;
 import org.iclass.controller.community.ListController;
 import org.iclass.controller.community.ReadController;
-
+import org.iclass.controller.community.UpdateController;
+import org.iclass.controller.community.UpdateViewController;
 import org.iclass.controller.community.WriteController;
 import org.iclass.controller.community.WriteViewController;
 import org.iclass.controller.member.LoginActionController;
@@ -21,7 +24,7 @@ public class RequestControllerMapping {
 		// 설계된 url,method 에 따라 처리할 controller 구현체를 Key,Value 로 HashMap에 저장합니다.
 		mapping.put(new RequestKeyValue("/community/list", "GET"), new ListController() );
 		mapping.put(new RequestKeyValue("/community/write","GET"), new WriteViewController() );
-//		mapping.put(new RequestKeyValue("/community/write","POST"), new WriteController() );
+		mapping.put(new RequestKeyValue("/community/write","POST"), new WriteController() );
 		
 		//로그인
 		mapping.put(new RequestKeyValue("/login", "GET"), new LoginViewController());
@@ -37,11 +40,11 @@ public class RequestControllerMapping {
 		mapping.put(new RequestKeyValue("/community/write","POST"), new WriteController() );
 
 		mapping.put(new RequestKeyValue("/community/read", "GET"), new ReadController() );
-//		mapping.put(new RequestKeyValue("/community/update","GET"), new UpdateViewController() );
-//		mapping.put(new RequestKeyValue("/community/update","POST"), new UpdateController() );
-//		mapping.put(new RequestKeyValue("/community/delete","GET"), new DeleteController() );		//오류 처리 위해 POST로 변경
+		mapping.put(new RequestKeyValue("/community/update","GET"), new UpdateViewController() );
+		mapping.put(new RequestKeyValue("/community/update","POST"), new UpdateController() );
+		mapping.put(new RequestKeyValue("/community/delete","GET"), new DeleteController() );		//오류 처리 위해 POST로 변경
 
-//		mapping.put(new RequestKeyValue("/community/comments","POST"), new CommentsController());
+		mapping.put(new RequestKeyValue("/community/comments","POST"), new CommentsController());
 
 //		//회원정보수정
 //		mapping.put(new RequestKeyValue("/member/modify","GET"),new MemberModifyController());
