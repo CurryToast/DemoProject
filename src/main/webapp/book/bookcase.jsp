@@ -114,10 +114,10 @@
   	<script type="text/javascript">
 		const obj ={};
 		let orderid='';
-  	</script>		
-  	<script src="../js/bookcase.js"></script>
+  	</script>
+  	<script src="../js/bookcase.js"></script>		  <!--tossPayInit 함수가 정의 되어있습니다.  -->
 	<script>
-	  	const modal = new bootstrap.Modal(document.querySelector(".modal"))  /* 부트스트랩의 모달 기능을 제공하는 객체*/
+	  	const modal = new bootstrap.Modal(document.querySelector(".modal"));  /* 부트스트랩의 모달 기능을 제공하는 객체*/
 		document.querySelector("#mainarea").addEventListener('click',function(evt){
 			evt.preventDefault();			//a 태그 등 pagination 안에 있는 기본 클릭 동작을 중지
 			//evt.stopPropagation();		//클릭 이벤트는 자식 또는 부모요소에 전달되는데 그것을 중지
