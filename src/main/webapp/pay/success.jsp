@@ -126,8 +126,6 @@
 			console.error(e.response)
 			location.href='../invalid.html'
 		})
-		
-		
 	</script>
 	</body>
 </html>

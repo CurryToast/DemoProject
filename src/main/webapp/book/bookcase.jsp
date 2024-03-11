@@ -44,20 +44,6 @@
 								        서버 컴퓨터 특정 폴더에 저장되도록 하며
 								        그 때에는 src 속성값도 url 변경합니다.
 							 -->
-<<<<<<< HEAD
-=======
-						</div>
-						<div  class="intro">	
-							<c:if test="${bo.status=='N' }">
-								<i class="fa-solid fa-circle-xmark"></i> 판매완료
-							</c:if>
-							<c:if test="${bo.status=='Y' }">
-							<!-- 결제에 필요한 모든 정보를 data-all 사용자 속성으로 저장 -->
-								<a data-all="${bo.bcode},${bo.title},${bo.price},${bo.saleuser}"><i class="fa-regular fa-circle-play"></i> 구매하기</a>
-							</c:if>
-							<div>
-							<c:out value="${bo.title }"/> (<fmt:formatNumber value="${bo.price }" pattern="###,###"/> 원)
->>>>>>> branch 'main' of https://github.com/kimsohee-around/DemoProject.git
 							</div>
 							<div  class="intro">	
 								<c:if test="${bo.status == 'N' }">
