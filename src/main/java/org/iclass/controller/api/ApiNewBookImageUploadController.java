@@ -26,17 +26,19 @@ public class ApiNewBookImageUploadController implements Controller {
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//서버에 전송될 위치(파일시스템 경로)
-		String path = "C:\\upload";
+		String path = "D:\\hyeonbeom\\upload";
 		
 		//업로드 가능한 최대 크기(바이트)
 		int maxSize = 10*1024*1024;		//1024바이트=1KB, 10MByte로 설정
 		
 		//request 를 파일을 받을 수 있는 request로 사용해야 합니다. : cos 라이브러리 추가
-		MultipartRequest multiRequest = new MultipartRequest(request, 
-				path,
-				maxSize,
-				"UTF-8",
-				new DateFileRenamePolicy());		
+		MultipartRequest multiRequest = new MultipartRequest(
+			request, 
+			path,
+			maxSize,
+			"UTF-8",
+			new DateFileRenamePolicy()
+		);		
 		//DefaultFileRenamePolicy 대신에 현재시간으로 파일명 변경
 		
 		//서버로 업로드된 파일의 파일명

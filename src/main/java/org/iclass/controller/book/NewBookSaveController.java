@@ -27,17 +27,19 @@ public class NewBookSaveController implements Controller {
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//서버에 전송될 위치(파일시스템 경로)
-		String path = "C:\\upload";
+		String path = "D:\\hyeonbeom\\upload";
 		
 		//업로드 가능한 최대 크기(바이트)
 		int maxSize = 10*1024*1024;		//1024바이트=1KB, 10MByte로 설정
 		
 		//request 를 파일을 받을 수 있는 request로 사용해야 합니다. : cos 라이브러리 추가
-		MultipartRequest multiRequest = new MultipartRequest(request, 
-				path,
-				maxSize,
-				"UTF-8",
-				new DefaultFileRenamePolicy());		
+		MultipartRequest multiRequest = new MultipartRequest(
+			request, 
+			path,
+			maxSize,
+			"UTF-8",
+			new DefaultFileRenamePolicy()
+		);		
 		//DefaultFileRenamePolicy는 중복된 파일명에 대해 새로파일명 부여하는 규칙(파일명뒤에 일련번호)
 		
 		//기존 방식처럼 text 타입 등 파라미터 받아오기

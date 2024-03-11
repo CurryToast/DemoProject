@@ -34,7 +34,7 @@ function quilljsediterInit(){
               // console.log(diff.ops[1]);
               console.log(diff.ops)
               diff.ops.forEach(op => {
-            	  console.log('op',op)
+            	  console.log('op',op);
             	  if(op.insert && op.insert.image !== null) {
 			        console.log('Image deleted:', op);
             	  }	  
@@ -86,8 +86,8 @@ function selectLocalImage() {
                 //data.uploadPath = data.uploadPath.replace(/\\/g, '/');
 
                 quill.insertEmbed(range.index, 'image', "/upload/" + data.filename);  // +"/"+ data.uuid +"_"+
-				console.log(document.querySelector('#editor').innerHTML)
-				console.log(quill.root.innerHTML)
+				console.log(document.querySelector('#editor').innerHTML);
+				console.log(quill.root.innerHTML);
             },
             error: function (err) {
                 console.log(err);

@@ -38,7 +38,7 @@
 				 -->
 				</div>
 				<hr>
-				<p>${bo.title }</p>
+				<p>${bo.title}</p>
 				<p style="font-size: 0.8em;">${bo.userid }</p>
 			</div>
 			</c:forEach>
@@ -50,7 +50,6 @@
 </section>
 <div data-num="2" id="datanum"></div>
 </div>
-
 <!-- The Modal -->
 <div class="modal" tabindex="-1">
 		<div class="modal-dialog">
@@ -72,20 +71,18 @@
 			</div>
 		</div>
 	</div>
-
-
 	<!--  -->
-			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/jquery.dropotron.min.js"></script>
-			<script src="../assets/js/browser.min.js"></script>
-			<script src="../assets/js/breakpoints.min.js"></script>
-			<script src="../assets/js/util.js"></script>
-			<script src="../assets/js/main.js"></script>
-			<script src="../js/nav.js"></script>
-			<!-- 부트스트랩 - 모달 사용 -->
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-			<!-- 비동기 http 통신 axios api-->
-			<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/jquery.dropotron.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+	<script src="../js/nav.js"></script>
+	<!-- 부트스트랩 - 모달 사용 -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- 비동기 http 통신 axios api-->
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
 		async function requestBookOne(idx){
 			const result = await axios.get('../api/book?idx='+idx)

@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>커피24 북카페</title>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="../css/layout.css" />
-	<link rel="stylesheet" href="../assets/css/style.css" />  <!-- 회원가입 (temp.css 는 미사용)-->
-	<link rel="stylesheet" href="../assets/css/main.css" />	
-	<link rel="stylesheet" href="../css/book.css" />
-	<link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-	<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+<title>커피24 북카페</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/layout.css" />
+<link rel="stylesheet" href="../assets/css/style.css" />  <!-- 회원가입 (temp.css 는 미사용)-->
+<link rel="stylesheet" href="../assets/css/main.css" />	
+<link rel="stylesheet" href="../css/book.css" />
+<link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
 
 <!-- 상대경로는 ../css/community.css 입니다. 
 request객체의 contextPath를 el로 접근할 때에는 현재 jsp 객체 pageContext 를 사용해야 합니다. -->
@@ -47,29 +47,32 @@ request객체의 contextPath를 el로 접근할 때에는 현재 jsp 객체 page
 			 	- 글에 이미지를 포함할 수 있습니다.</label></th> </tr>
 			 	<tr>
 			 		<td colspan="2">
-			 		<div id="editor"></div>
-					<input type="hidden" id="quill_html" name="summary">
+				 		<!-- quill 에디터 ui가 표시되는 영역 -->
+				 		<div id="editor"></div>
+				 		<!-- quill 라이브러리로 작성한 글 -->
+						<input type="hidden" id="quill_html" name="summary">
 			 		</td>
 			 	</tr>
 			 	<tr>
 			 	<!-- <th></th> -->
-			 	<td style="text-align: center;padding: 10px;" colspan="2">
-			 	<button type="submit" class="book-btn">저장</button>
-			 	<button type="reset" class="book-btn">다시쓰기</button>
-			 	<button type="button" onclick="location.href='list'" class="book-btn">목록</button>
-			 	</td></tr>
+				 	<td style="text-align: center;padding: 10px;" colspan="2">
+					 	<button type="submit" class="book-btn">저장</button>
+					 	<button type="reset" class="book-btn">다시쓰기</button>
+					 	<button type="button" onclick="location.href='list'" class="book-btn">목록</button>
+				 	</td>
+			 	</tr>
 			 </table>
 			 </form>
 			 </section>
 			 <div data-num="2" id="datanum"></div>
 	</div>		 
-			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/jquery.dropotron.min.js"></script>
-				<script src="../assets/js/browser.min.js"></script>
-			<script src="../assets/js/breakpoints.min.js"></script>
-			<script src="../assets/js/util.js"></script>
-			<script src="../assets/js/main.js"></script>
-			<script src="../js/nav.js"></script>
-			<script src="../js/editor.js"></script>
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/jquery.dropotron.min.js"></script>
+<script src="../assets/js/browser.min.js"></script>
+<script src="../assets/js/breakpoints.min.js"></script>
+<script src="../assets/js/util.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../js/nav.js"></script>
+<script src="../js/editor.js"></script>
 </body>
 </html>
