@@ -124,7 +124,7 @@
 			const target = evt.target;
 			if(target.tagName !== 'A') {
 				return;
-			}			
+			}
 
 			let yn;
 			if ('${user.userid}' == ''){

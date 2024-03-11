@@ -5,7 +5,6 @@ function tossPayInit() {
 	const clientKey = 'test_ck_4yKeq5bgrpe6jy91gnXp8GX0lzW6';
 
     const customerKey = crypto.randomUUID(); // 내 상점에서 고객을 구분하기 위해 발급한 고객의 고유 ID(임의값)
-    console.log("@@@@@@ customerKey : ", customerKey);
 //  const coupon = document.getElementById("coupon-box");
 
     const button = document.getElementById("payment-button");
@@ -20,12 +19,12 @@ function tossPayInit() {
     // https://docs.tosspayments.com/reference/widget-sdk#renderpaymentmethods선택자-결제-금액-옵션
 
     const paymentMethodWidget = paymentWidget.renderPaymentMethods(
-      "#payment-method", 
+      "#payment-method",
       { value: Number(obj.price) },
       // 렌더링하고 싶은 결제 UI의 variantKey
       // 결제 수단 및 스타일이 다른 멀티 UI를 직접 만들고 싶다면 계약이 필요해요.
       // https://docs.tosspayments.com/guides/payment-widget/admin#멀티-결제-ui
-      { variantKey: "DEFAULT" } 
+      { variantKey: "DEFAULT" }
     );
 
     // ------  이용약관 UI 렌더링 ------
@@ -39,15 +38,15 @@ function tossPayInit() {
 	console.log("obj :",obj.price);
 	paymentMethodWidget.updateAmount(Number(obj.price));
 	const selectedPaymentMethod = paymentMethodWidget.getSelectedPaymentMethod();
-      
+
     // ------ '결제하기' 버튼 누르면 결제창 띄우기 ------
     // 더 많은 결제 정보 파라미터는 결제위젯 SDK에서 확인하세요.
     // https://docs.tosspayments.com/reference/widget-sdk#requestpayment결제-정보
     const payObj = {
-        orderId: obj.bcode + '_' + orderid,            
-        orderName: obj.title,                 
-        successUrl: window.location.origin + "/DemoProject/pay/success",  
-        failUrl: window.location.origin + "/DemoProject/pay/fail",        
+        orderId: obj.bcode + '_' + orderid,
+        orderName: obj.title,
+        successUrl: window.location.origin + "/DemoProject/pay/success",
+        failUrl: window.location.origin + "/DemoProject/pay/fail",
         customerName: obj.saleuser
     };
 

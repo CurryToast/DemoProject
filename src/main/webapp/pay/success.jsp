@@ -106,8 +106,8 @@
 				orderid: payment.orderId , 
 				amount: payment.totalAmount, 
 				buyuser:buyuser, 
-				paydate:payment.approvedAt ,
-				paytype : payment.card.cardType + ' ' + payment.method, 
+				paydate:payment.approvedAt,
+				paytype : payment.card.cardType + ' ' + payment.method,
 				paymentkey:payment.paymentKey
 			};
 
