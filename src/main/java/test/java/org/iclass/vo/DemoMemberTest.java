@@ -16,18 +16,18 @@ class DemoMemberTest {
 
 	@Test
 	void test() {
-//		testMemberJoin();
- 	    testMemberLogin();
+		testMemberJoin();
+// 	    testMemberLogin();
 	}
 	
 	void testMemberJoin() {
 		MemberService service = new MemberService();
 		int result = service.join(new DemoMember(
-			"gusqja4515",
-			"임현범",
-			"123456",
-			"gusqja4515@naver.com",
-			"19950712",
+			"admin",
+			"admin",
+			"1111",
+			"admin@koreait.com",
+			"99999999",
 			"MALE",
 			"010-2666-4515",
 			null,
