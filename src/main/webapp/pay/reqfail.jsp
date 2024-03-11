@@ -5,13 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>커피24 북카페</title>
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <style type="text/css">
-		  #myModal{
-		  	display: block;
-		  }
-  </style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<style type="text/css">
+	#myModal{
+	  display: block;
+	}
+</style>
 </head>
 <body>
 <!-- The Modal -->
@@ -38,5 +38,4 @@
     </div>
   </div>
 </div>
-
 </html>

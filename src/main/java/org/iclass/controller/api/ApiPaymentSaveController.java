@@ -27,7 +27,6 @@ public class ApiPaymentSaveController implements Controller{
 	
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		request.setCharacterEncoding("UTF-8");
 		
 		InputStream inputStream = request.getInputStream();
@@ -53,7 +52,7 @@ public class ApiPaymentSaveController implements Controller{
 		response.setDateHeader("Expires", 0);
 		response.setContentType("text/plain;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		if(cnt==1)
+		if(cnt == 1)
 			out.print("결제가 완료되었습니다.");
 		else
 			out.print("결제 오류가 발생했습니다.");

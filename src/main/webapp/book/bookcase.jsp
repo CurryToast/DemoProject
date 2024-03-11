@@ -9,64 +9,64 @@
 	License: pixelarity.com/license
 -->
 <html>
-	<head>
-		<title>커피24 북카페</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../css/bookmodal.css" />	
-		<link rel="stylesheet" href="../css/layout.css" />
-		<link rel="stylesheet" href="../assets/css/style.css" />  <!-- 회원가입 (temp.css 는 미사용)-->
-		<link rel="stylesheet" href="../assets/css/main.css" />
-		<link rel="stylesheet" href="../css/booklist.css"> 
-		<script src="https://kit.fontawesome.com/352c53403e.js" crossorigin="anonymous"></script>
-	</head>
-	<body class="is-preload">
-		<div id="page-wrapper">
-			<!-- Header -->
-			<%@ include file="../layout/header.jsp" %>
-			<!-- Main -->
-			<section id="booklist">
-				<h3>책장</h3>
-				<p>판매 중인 중고도서입니다.</p>
-				<hr style="color:white;">
+<head>
+	<title>커피24 북카페</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../css/bookmodal.css" />	
+	<link rel="stylesheet" href="../css/layout.css" />
+	<link rel="stylesheet" href="../assets/css/style.css" />  <!-- 회원가입 (temp.css 는 미사용)-->
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<link rel="stylesheet" href="../css/booklist.css"> 
+	<script src="https://kit.fontawesome.com/352c53403e.js" crossorigin="anonymous"></script>
+</head>
+<body class="is-preload">
+	<div id="page-wrapper">
+		<!-- Header -->
+		<%@ include file="../layout/header.jsp" %>
+		<!-- Main -->
+		<section id="booklist">
+			<h3>책장</h3>
+			<p>판매 중인 중고도서입니다.</p>
+			<hr style="color:white;">
 
-				<c:if test="${user != null}">
-					<div style="text-align: center;">
-						<a href="form">판매 등록</a>
-					</div>
-				</c:if>
-				<div id="mainarea">
-					<c:forEach var="bo" items="${saleList }">
-					<div class="gallery bookcase">
-						<div style="height:80%;">
-						<img src="/upload/${bo.cover }" alt="${bo.title }">
-							<!-- todo : 사용자가 파일 (이미지,텍스트 등)을 업로드 했을 때
-								        서버 컴퓨터 특정 폴더에 저장되도록 하며
-								        그 때에는 src 속성값도 url 변경합니다.
-							 -->
-							</div>
-							<div  class="intro">	
-								<c:if test="${bo.status == 'N'}">
-									<i class="fa-solid fa-circle-xmark"></i> 판매완료
-								</c:if>
-								<c:if test="${bo.status == 'Y'}">
-									<!-- 결제에 필요한 모든 정보를 data-all 사용자 속성으로 저장 -->
-									<a data-all="${bo.bcode},${bo.title},${bo.price},${bo.saleuser}"><i class="fa-regular fa-circle-play"></i> 구매하기</a>
-								</c:if>
-								<div>
-									<c:out value="${bo.title}"/> (<fmt:formatNumber value="${bo.price }" pattern="###,###"/> 원)
-								</div>
-								<div><span style="font-size: 0.8em;">판매회원</span> : <c:out value="${bo.saleuser }"/></div>
-							</div>
-						</div>
-					</c:forEach>
+			<c:if test="${user != null}">
+				<div style="text-align: center;">
+					<a href="form">판매 등록</a>
 				</div>
-			</section>
-			<%@ include file="../layout/footer.jsp" %>
-			<div data-num="3" id="datanum"></div>
-		</div>
-<!-- The Modal -->
-<div class="modal" tabindex="-1">
+			</c:if>
+			<div id="mainarea">
+				<c:forEach var="bo" items="${saleList }">
+				<div class="gallery bookcase">
+					<div style="height:80%;">
+					<img src="/upload/${bo.cover }" alt="${bo.title }">
+						<!-- todo : 사용자가 파일 (이미지,텍스트 등)을 업로드 했을 때
+							        서버 컴퓨터 특정 폴더에 저장되도록 하며
+							        그 때에는 src 속성값도 url 변경합니다.
+						 -->
+						</div>
+						<div  class="intro">	
+							<c:if test="${bo.status == 'N'}">
+								<i class="fa-solid fa-circle-xmark"></i> 판매완료
+							</c:if>
+							<c:if test="${bo.status == 'Y'}">
+								<!-- 결제에 필요한 모든 정보를 data-all 사용자 속성으로 저장 -->
+								<a data-all="${bo.bcode},${bo.title},${bo.price},${bo.saleuser}"><i class="fa-regular fa-circle-play"></i> 구매하기</a>
+							</c:if>
+							<div>
+								<c:out value="${bo.title}"/> (<fmt:formatNumber value="${bo.price }" pattern="###,###"/> 원)
+							</div>
+							<div><span style="font-size: 0.8em;">판매회원</span> : <c:out value="${bo.saleuser }"/></div>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+		</section>
+		<%@ include file="../layout/footer.jsp" %>
+		<div data-num="3" id="datanum"></div>
+	</div>
+	<!-- The Modal -->
+	<div class="modal" tabindex="-1">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -113,7 +113,7 @@
 	<script src="https://js.tosspayments.com/v1/payment-widget"></script>
   	<script type="text/javascript">
 		const obj ={};
-		let orderid='';
+		let orderid = '';
   	</script>
   	<script src="../js/bookcase.js"></script>		  <!--tossPayInit 함수가 정의 되어있습니다.  -->
 	<script>
@@ -127,7 +127,7 @@
 			}			
 
 			let yn;
-			if('${user.userid}' == ''){
+			if ('${user.userid}' == ''){
 				yn=confirm('구매는 로그인이 필요합니다. 로그인 하시겠습니까?');
 				/* 로그인 후 구매 돌아가기 */
 				if(yn) {
@@ -155,5 +155,5 @@
 			}
 		})
 	</script>			
-	</body>
+</body>
 </html>

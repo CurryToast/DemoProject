@@ -31,12 +31,12 @@ public class RequestControllerMapping {
 		mapping.put(new RequestKeyValue("/community/list", "GET"), new ListController() );
 		mapping.put(new RequestKeyValue("/community/write","GET"), new WriteViewController() );
 		mapping.put(new RequestKeyValue("/community/write","POST"), new WriteController() );
-		
+
 		// 로그인
 		mapping.put(new RequestKeyValue("/login", "GET"), new LoginViewController());
 		mapping.put(new RequestKeyValue("/login", "POST"), new LoginActionController());
 		mapping.put(new RequestKeyValue("/logout", "GET"), new LogoutController());
-		
+
 //		mapping.put(new RequestKeyValue("/join","GET"), new MemberJoinController());
 //		mapping.put(new RequestKeyValue("/join","POST"), new MemberSaveController());
 
@@ -64,7 +64,7 @@ public class RequestControllerMapping {
 
 		mapping.put(new RequestKeyValue("/community/comments","POST"), new CommentsController());
 
-		//새로나온책 (파일업로드)
+		// 새로나온책 (파일업로드)
 //		mapping.put(new RequestKeyValue("/book/new", "GET"), new NewFormController());
 //		mapping.put(new RequestKeyValue("/book/new", "POST"), new NewBookSaveController());
 //		mapping.put(new RequestKeyValue("/book/upload", "POST"), new ApiNewBookImageUploadController());
