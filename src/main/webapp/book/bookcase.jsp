@@ -29,7 +29,6 @@
 			<h3>책장</h3>
 			<p>판매 중인 중고도서입니다.</p>
 			<hr style="color:white;">
-
 			<c:if test="${user != null}">
 				<div style="text-align: center;">
 					<a href="form">판매 등록</a>
