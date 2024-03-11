@@ -116,7 +116,7 @@
 		const obj ={};
 		let orderid='';
   	</script>		
-  	<script src="../js/bookcase.js"></script>		
+  	<script src="../js/bookcase.js"></script>
 	<script>
 	  	const modal = new bootstrap.Modal(document.querySelector(".modal"))  /* 부트스트랩의 모달 기능을 제공하는 객체*/
 		document.querySelector("#mainarea").addEventListener('click',function(evt){
@@ -127,7 +127,7 @@
 
 			let yn
 			if('${user.userid}'==''){
-				yn=confirm('글쓰기는 로그인이 필요합니다. 로그인 하시겠습니까?')
+				yn=confirm('구매는 로그인이 필요합니다. 로그인 하시겠습니까?')
 				/* 로그인 후 글쓰기로 돌아가기 */
 				if(yn) {
 					sessionStorage.setItem('back', 'book/bookcase');
