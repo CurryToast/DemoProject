@@ -17,10 +17,8 @@ public class AuthCertSMSController implements Controller {
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//View 
-		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("../sms.jsp");
 		dispatcher.forward(request, response);
 
 	}
-
 }

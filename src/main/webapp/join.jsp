@@ -5,18 +5,19 @@
 <html>
 <head>
 <title>커피24 북카페</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-		<meta http-equiv="Pragma" content="no-cache">
-		<meta http-equiv="Expires" content="0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
  <!--   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> -->
  <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="assets/css/style.css" />  <!-- 회원가입 (temp.css 는 미사용)-->
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="stylesheet" href="css/join.css" /> 
     <script>
+    /* sms.jsp에서 인증하기 성공하면 메시지를 보낸것 window.opener.postMessage를 받는 이벤트입니다. */
       window.addEventListener('message', (e) => {
 		  console.log('-->',e.data);
         if (e && e.data) {
@@ -43,7 +44,7 @@
               $("#phone").val(data.phone);
             }
             $("#adultYn").val(data.adultYn)
-            */
+            */   
           } else {
             alert(data.message);
             location.reload();
@@ -54,66 +55,72 @@
       }, false)
 
       function certPhone() {
-
         const data = $('#formTerms').serializeObject();
-        
+
         if (true && !data.terms06) {
           alert("회원 통합 서비스에 동의해주세요.");
           return;
         }
-        
+
         if (true && !data.terms05) {
           alert("개인정보 수집 및 이용 동의에 동의해주세요.");
           return;
         }
-        
+
         if (false && !data.terms07) {
           alert("마케팅 정보 활용 동의에 동의해주세요.");
           return;
         }
-        
 
         var adultYn = $('input:radio[name="adultYn"]:checked').val();
         if (!adultYn) {
-          alert("14세 이상/미만 여부를 확인해주세요.")
+          alert("14세 이상/미만 여부를 확인해주세요.");
           return;
         }
 
         if (adultYn === 'N') {
           $("#under14Popup").addClass("active");
         } else {
-          window.open('auth/cert/sms?certType=JOIN&adultYn=Y', '본인 인증', 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no')
+          window.open(
+        	'auth/cert/sms?certType=JOIN&adultYn=Y',
+        	'본인 인증',
+        	'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no'
+          );
         }
       }
 
       function certPhoneChild() {
         const checked = $("#adultAgree").prop("checked");
         if (!checked) {
-          alert("보호자 개인정보 수집 및 이용에 동의해주세요.")
+          alert("보호자 개인정보 수집 및 이용에 동의해주세요.");
           return;
         }
+
         $('#under14Popup').removeClass('active');
-        window.open('auth/cert/sms?certType=JOIN&adultYn=N', '본인 인증', 'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no')
+        window.open(
+        	'auth/cert/sms?certType=JOIN&adultYn=N',
+        	'본인 인증',
+        	'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no'
+        );
       }
 
       var isChecked = false;
 
       function join() {
-    	  
     	const fav =  document.querySelector('#favorites')	  
     	fav.value = fav.value + ',' + document.querySelector('#etc').value
-    	  
+
         const data = $('#form').serializeObject();
 
         var adultYn = $('input:radio[name="adultYn"]:checked').val();
-       /*  if(adultYn=='N'){
-            var year  = $("#year").val();
-            var month = $("#month").val();
-            var day   = $("#day").val();
-            var birth = year.toString()+month.toString()+day.toString();
-            data.birth = birth;
-        }
- */
+        /*  if(adultYn=='N'){
+              var year  = $("#year").val();
+              var month = $("#month").val();
+              var day   = $("#day").val();
+              var birth = year.toString()+month.toString()+day.toString();
+              data.birth = birth;
+        	}
+ 		*/
         data.adultYn = adultYn;
         data.gender = $('input:radio[name="gender"]:checked').val();
         console.log(data);
@@ -226,6 +233,7 @@
           return;
         }
 
+        // form 태그 안의 모든 요소값을 직렬화. json 문자열로 변환합니다.
         const data = $('#form').serializeObject();
         var idRule = /^[a-z]+[a-z0-9]{5,11}$/g;
         if(!idRule.test(data.username)){
@@ -234,14 +242,15 @@
             return;
         }
 		console.log('request data',data);
+		/* 비동기 통신을 위한 jquery (순수 자바스크립트의 XMLHttpRequest를 쉽게 사용하도록 합니다.)*/
         $.ajax({
           url        : './api/auth/checkId',
           data       : data,
-          dataType: 'json',
+          dataType	 : 'json',
           type       : 'post',
         /* json 으로 직렬화 하지 않고 보내기 */
-        /*   contentType: 'application/json', */
-          success : function(res){
+        /*   ㄴ contentType: 'application/json', */
+          success : function(res){ // 요청 성공하면 응답을 res에 저장
         	console.log('/api/auth/checkId',res) ;
         	if (!res.isExist) {
 	            alert("사용 가능한 아이디입니다.");
@@ -330,20 +339,18 @@
   	<jsp:include page="joinagree.jsp"/>
     <hr>
     <%@include file="../layout/footer.jsp" %>
-</div>    
- 
+</div>
 <!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/swipper.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="assets/js/map.daum.js"></script>
-			<script src="assets/js/script.js"></script>
-			<script src="js/join.js"></script>
-			
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.dropotron.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/swipper.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/map.daum.js"></script>
+<script src="assets/js/script.js"></script>
+<script src="js/join.js"></script>
 <!-- 계정 : wonder , 패스워드 : thGH123!@4 -->
 </body>
 </html>
