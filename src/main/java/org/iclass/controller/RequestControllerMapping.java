@@ -54,20 +54,19 @@ public class RequestControllerMapping {
 		mapping.put(new RequestKeyValue("/member/modify","GET"),new MemberModifyController());
 		mapping.put(new RequestKeyValue("/member/drop","GET"),new MemberDropController());
 
+		// 로그인
 		mapping.put(new RequestKeyValue("/login", "GET"), new LoginViewController());
 		mapping.put(new RequestKeyValue("/login", "POST"), new LoginActionController());
 		mapping.put(new RequestKeyValue("/logout", "GET"), new LogoutController());
 
-		// 게시판 글 상세보기 ,수정하기,삭제하기
+		// 게시판 글 상세보기, 수정하기, 삭제하기, 댓글
 		mapping.put(new RequestKeyValue("/community/list", "GET"), new ListController() );
 		mapping.put(new RequestKeyValue("/community/write","GET"), new WriteViewController() );
 		mapping.put(new RequestKeyValue("/community/write","POST"), new WriteController() );
-
 		mapping.put(new RequestKeyValue("/community/read", "GET"), new ReadController() );
 		mapping.put(new RequestKeyValue("/community/update","GET"), new UpdateViewController() );
 		mapping.put(new RequestKeyValue("/community/update","POST"), new UpdateController() );
 		mapping.put(new RequestKeyValue("/community/delete","GET"), new DeleteController() );	// 오류 처리 위해 POST로 변경
-
 		mapping.put(new RequestKeyValue("/community/comments","POST"), new CommentsController());
 
 		//새로나온책 (파일업로드)
