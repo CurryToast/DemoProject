@@ -20,47 +20,70 @@ import org.slf4j.LoggerFactory;
 public class SessionFilter implements Filter {
 	private static final Logger logger = LoggerFactory.getLogger(SessionFilter.class);
 
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) 
-			throws IOException, ServletException {
-		
-		//로그인이 되었을 때 접근할 수 없는 url 입니다.
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		// 로그인이 되었을 때 접근할 수 없는 url 입니다.
 		List<String> nosessions = List.of("/member/join","/login","/test");
-		
-		//로그인을 해야 접근할 수 있는 url 입니다.
-		List<String> logins = List.of("/community/update","/community/delete",
-						"/community/comments","/community/write","/member/modify","/member/drop","/api/modify");
-		//List.of 메소드는 java 9 부터 사용합니다. 불변컬렉션(추가/삭제 못하는 리스트) 생성
-		
-		//관리자만 접근하는 url
-		List<String> admins = List.of("/notice/write","/notice/update","/notice/delete","/admin");
-		
+
+		/*
+		 * 로그인을 해야 접근할 수 있는 url 입니다.
+		 * List.of 메소드는 java 9 부터 사용합니다. 불변컬렉션(추가/삭제 못하는 리스트) 생성
+		 * */
+		List<String> logins = List.of(
+			"/community/update",
+			"/community/delete",
+			"/community/comments",
+			"/community/write",
+			"/member/modify",
+			"/member/drop",
+			"/api/modify"
+		);
+
+		// 관리자만 접근하는 url
+		List<String> admins = List.of(
+			"/notice/write",
+			"/notice/update",
+			"/notice/delete",
+			"/admin"
+		);
+
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
-		
-		logger.info(":::::::: 요청 전 SessionFilter: {} , {} ::::::::",httpRequest.getServletPath(),System.currentTimeMillis());
-		
-		//로그인 정보 세션에서 가져오기
+
+		logger.info(
+			":::::::: 요청 전 SessionFilter: {} , {} ::::::::",
+			httpRequest.getServletPath(), System.currentTimeMillis()
+		);
+
+		// 로그인 정보 세션에서 가져오기
 		HttpSession session = httpRequest.getSession();
 		DemoMember user = (DemoMember) session.getAttribute("user");
 
-		//로그인이 되었을 때(user != null ) 접근할 수 없는 url 입니다.   또는  //로그인 안됐을때(user == null) 접근할 수 없는 url 입니다.
-		//contains는 리스트에 지정된 요소가 포함되면 true , 없으면 false 리턴합니다.
-		if(nosessions.contains(httpRequest.getServletPath()) && user != null 
-				|| logins.contains(httpRequest.getServletPath()) && user == null) {
-			//접근이 안되는 경우 컨텍스트 패스로 redirect
+		// 로그인이 되었을 때(user != null ) 접근할 수 없는 url 입니다.   또는  //로그인 안됐을때(user == null) 접근할 수 없는 url 입니다.
+		// contains는 리스트에 지정된 요소가 포함되면 true , 없으면 false 리턴합니다.
+		if(
+			nosessions.contains(httpRequest.getServletPath()) && user != null
+			|| logins.contains(httpRequest.getServletPath()) && user == null
+		) {
+			// 접근이 안되는 경우 컨텍스트 패스로 redirect
 			httpResponse.sendRedirect(httpRequest.getContextPath());
+
 			return;		//다음 필터 적용하지 않도록 종료
 		}
-		
-		if(admins.contains(httpRequest.getServletPath()) && 
-				(user==null || !user.getUserid().equals("admin"))) { 		//로그인은 안헀거나 id가 'admin'이 아니면
-			//httpResponse.sendRedirect(httpRequest.getContextPath());
-				throw new IOException();
-//			return;	
-		}
-		
-		chain.doFilter(request, response);
-		logger.info(":::::::: 요청 후  SessionFilter: {} , {} ::::::::",httpRequest.getServletPath(),System.currentTimeMillis());
-	}
 
+		if (
+			admins.contains(httpRequest.getServletPath()) && 
+			(user == null || !user.getUserid().equals("admin"))
+		) { // 로그인은 안헀거나 id가 'admin'이 아니면
+			// httpResponse.sendRedirect(httpRequest.getContextPath());
+			throw new IOException();
+
+//			return;
+		}
+
+		chain.doFilter(request, response);
+		logger.info(
+			":::::::: 요청 후  SessionFilter: {} , {} ::::::::",
+			httpRequest.getServletPath(), System.currentTimeMillis()
+		);
+	}
 }

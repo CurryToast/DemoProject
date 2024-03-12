@@ -22,7 +22,6 @@ public class NoticeListController implements Controller {
 
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		request.setCharacterEncoding("UTF-8");
 		
 		logger.info(":::::::: 요청 {} 처리 시작 : {} ::::::::",this.getClass(),request.getServletPath());

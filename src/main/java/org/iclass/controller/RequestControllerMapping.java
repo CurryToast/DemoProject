@@ -50,7 +50,7 @@ public class RequestControllerMapping {
 		mapping.put(new RequestKeyValue("/login", "GET"), new LoginViewController());
 		mapping.put(new RequestKeyValue("/login", "POST"), new LoginActionController());
 		mapping.put(new RequestKeyValue("/logout", "GET"), new LogoutController());
-		
+
 		// 회원가입
 		mapping.put(new RequestKeyValue("/join","GET"), new MemberJoinController());
 		mapping.put(new RequestKeyValue("/join","POST"), new MemberSaveController());
